@@ -1,0 +1,94 @@
+.col1 {
+    padding: 90px;
+    color: white;
+    background-color: rgb(88, 80, 80);
+}
+
+.col2 {
+    padding: 60px;
+    color: black;
+    background-color: white;
+}
+
+.col3 {
+    padding: 183px;
+    color: white;
+    background-color: rgb(88, 80, 80);
+}
+
+.block4 {
+    color: black;
+    background-color: white;
+}
+
+.block4 h1 {
+    font-size: 25px;
+}
+
+.block4 h3 {
+    font-size: 20px;
+}
+
+.block5 {
+    color: white;
+    background-color: rgb(9, 137, 234);
+}
+
+.block5 h1 {
+    font-size: 25px;
+}
+
+.block5 h3 {
+    font-size: 20px;
+}
+
+.block5 h4{
+    font-size: 17px;
+}
+
+.block6 {
+    color: white;
+    background-color: rgb(88, 80, 80);
+}
+
+.block6 h1 {
+    font-size: 25px;
+}
+
+.block6 h3 {
+    font-size: 20px;
+}
+
+.block7 {
+    color: white;
+    background-color: black;
+}
+
+.block7 h1 {
+    font-size: 25px;
+}
+
+.block7 h3 {
+    font-size: 20px;
+}
+
+.block7 h4{
+    font-size: 17px;
+}
+
+
+.top button {
+    color: white;
+    background-color: rgb(88, 80, 80);
+}
+
+.middle-block h1{
+    font-size: 30px;
+}
+
+.bottom-col {
+    display: flex;
+    color: black;
+    background-color: white;
+}
+
