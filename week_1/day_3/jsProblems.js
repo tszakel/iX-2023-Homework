@@ -1,8 +1,13 @@
 
 function printEven(stopNumber){
-    for (let i = 0; i <= stopNumber; i += 2) {
-        console.log(i)
+    let evenArray = [];
+    for (let i = 0; i < stopNumber; i++) {
+        if (i % 2  == 0){
+            evenArray.push(i)
+        }
     }
+
+    console.log('Even Numbers: ' + evenArray)
 }
 
 function fibonacci(stopNum){
@@ -70,16 +75,24 @@ function mult(a, b) {
     return a * b;
 }
 
-function getZipCode(a, b) {
-
+function getZipCode(city) {
+    switch (city) {
+        case 'Cape Town': console.log('Zip Code: ' + 3201); break;
+        case 'San Antonio': console.log('Zip Code: ' + 78258); break;
+        default: console.log('Unknown City'); break;
+    }
 }
 
 function sortStr(strArray) {
     return strArray.sort();
 }
 
-function sortASC(intArray){
-    return intArray.sort();
+function ASCsortDESC(intArray, order){
+    if(order == "ASC"){
+        return intArray.sort();
+    } else {
+        return intArray.sort().reverse;
+    }
 }
 
 function reverseNum(num) {
@@ -142,4 +155,4 @@ function greaterThanTen(intArray) {
     return tenPlus
 }
 
-console.log(greaterThanTen([10,9,17,2,21]));
+console.log(printEven(7));
