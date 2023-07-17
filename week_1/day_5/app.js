@@ -2,64 +2,58 @@ class Task {
     constructor(task) {
       this.task = task;
     }
-  
-    static fromJSON(json) {
-      return new Task(json.task);
-    }
   }
 
 class UI {
     constructor() {  
+      this.form = document.getElementById('form');
       this.task = document.getElementById('task');
   
       this.tableBody = document.getElementById('table-body');
   
-      this.addRem.addEventListener('addRem', (e) => this.onFormSubmit(e));
+      this.form.addEventListener('submit', (e) => this.onFormSubmit(e));
   
       this.tasks = [];
-      this.loadTasksFromLocalStorage();
+
       this.renderTaskTable();
     }
   
     onFormSubmit(e) {
       e.preventDefault();
+      console.log('added');
   
-      if (
-        this.task.value == ''
-      ) {
+      if (this.task.value == '') {
         return;
       }
   
       const task = new Task(this.task.value);
   
-      this.task.push(task);
-  
-      this.saveTasksToLocalStorage();
+      this.tasks.push(task);
       this.renderTaskTable();
   
       this.task.value = '';
     }
 
-    renderTaskTable() {
-        this.tableBody.innerHTML = '';
-    
-        for (let i = 0; i < this.task.length; i++) {
-          const task = this.task[i];
-    
-          const tr = this.createTaskTableRow(book);
-          this.tableBody.appendChild(tr);
-        }
+  renderTaskTable() {
+      this.tableBody.innerHTML = '';
+  
+      for (let i = 0; i < this.tasks.length; i++) {
+        const task = this.tasks[i];
+  
+        const tr = this.createTaskTableRow(task);
+        this.tableBody.appendChild(tr);
       }
+  }
 
-createTaskTableRow(task) {
+  createTaskTableRow(task) {
     const tr = document.createElement('tr');
 
-    const tdTask = document.createElement('th');
+    const tdTask = document.createElement('td');
+    const tdActions = document.createElement('td');
     
     tdTask.innerHTML = task.value;
     
-
-    const actionButtons = this.createActionButtons(task);
+    const actionButtons = this.createActionButtons();
     tdActions.appendChild(actionButtons[0]);
 
     tr.appendChild(tdTask);
@@ -67,40 +61,15 @@ createTaskTableRow(task) {
     return tr;
   }
 
-  createActionButtons(task) {
+  createActionButtons() {
     const deleteButton = document.createElement('button');
 
     deleteButton.setAttribute('class', 'btn btn-danger btn-sm');
     deleteButton.innerHTML = 'Delete';
-    deleteButton.addEventListener('click', () =>
-      this.onRemoveTaskClicked(task)
-    );
+    deleteButton.addEventListener('click', () => { console.log('Delete button clicked'); });
 
     return [deleteButton];
   }
-
-  onRemoveTaskClicked(task) {
-    this.task = this.task.filter((x) => {
-      return book.isbn !== x.isbn;
-    });
-
-    this.saveBooksToLocalStorage();
-    this.renderBookTable();
-  }
-
-  saveTasksToLocalStorage() {
-    const json = JSON.stringify(this.books);
-    localStorage.setItem('books', json);
-  }
-
-  loadTasksFromLocalStorage() {
-    const json = localStorage.getItem('books');
-    if (json) {
-      const bookArr = JSON.parse(json);
-      this.books = bookArr.map((x) => Book.fromJSON(x));
-    }
-  }
-
 }
 
 const ui = new UI();
