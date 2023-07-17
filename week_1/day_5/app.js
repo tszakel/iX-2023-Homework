@@ -59,7 +59,7 @@ createTaskTableRow(task) {
   
   tdTask.innerHTML = task.taskName;
   
-  const actionButtons = this.createActionButtons();
+  const actionButtons = this.createActionButtons(task);
   tdComplete.appendChild(actionButtons[0]);
   tdActions.appendChild(actionButtons[1]);
 
