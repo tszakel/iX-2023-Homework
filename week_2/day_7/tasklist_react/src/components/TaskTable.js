@@ -17,13 +17,13 @@ export default function TaskTable(props){
                         return (
                         <tr key={task.taskNum}>
                             <td>{task.taskName}</td>
-                            <td>{task.taskNum}</td>
                             <td>
                                 <input type='radio'
                                     className=''
-                                    onClick={() => props.onTaskComplete(task)}>Completed?
+                                    onClick={() => props.onTaskComplete(task)}>
                                 </input>
                             </td>
+                            <td>{task.taskNum}</td>
                             <td>
                                 <button 
                                 className='btn btn-danger me-1 btn-sm'

@@ -5,12 +5,13 @@ import { Task } from '../models/task';
 export default function TaskForm(props){
     const [taskName, setTaskName] = useState('');
     const [taskNum, setTaskNum] = useState(0);
-    const [taskComplete, setTaskComplete] = useState(0);
+    const [taskComplete, setTaskComplete] = useState(false);
 
     useEffect(() => {
         if (props.taskToEdit) {
             setTaskName(props.taskToEdit.taskName);
             setTaskNum(props.taskToEdit.taskNum);
+            setTaskComplete(props.taskToEdit.taskComplete);
         }
     }, [props.taskToEdit]);
 
@@ -32,6 +33,7 @@ export default function TaskForm(props){
     function clearInputs() {
         setTaskName('');
         setTaskNum(0);
+        setTaskComplete(false);
     }
 
     return (

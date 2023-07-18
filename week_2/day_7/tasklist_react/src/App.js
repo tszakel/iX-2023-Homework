@@ -32,8 +32,8 @@ function App() {
   }
 
   function onTaskComplete(task) {
-    setTaskComplete(task);
-    setTasks(tasks.filter((x) => x.taskNum !== task.taskNum));
+    task.taskComplete = true;
+    console.log(task.taskComplete)
   }
 
   function saveTasksToLocalStorage() {
@@ -55,7 +55,7 @@ function App() {
     <div className='text-ceenter m-5'>
       <div className='card p-4'>
         <TaskForm onTaskCreated={onTaskCreated} taskToEdit={taskToEdit} onTaskComplete={taskComplete}/>
-        <TaskTable tasks={tasks} onTaskDelete={onTaskDelete} onTaskEdit={onTaskEdit} onTaskComplete={taskComplete}/>
+        <TaskTable tasks={tasks} onTaskDelete={onTaskDelete} onTaskEdit={onTaskEdit} onTaskComplete={onTaskComplete}/>
       </div>
     </div>
   );
