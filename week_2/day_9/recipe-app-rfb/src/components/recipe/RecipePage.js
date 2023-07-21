@@ -18,8 +18,8 @@ export default function RecipePage() {
 
   async function onInitialLoad() {
     try {
-      const tasks = await RecipeService.fetchTasks();
-      setRecipes(tasks);
+      const recipes = await RecipeService.fetchRecipes();
+      setRecipes(recipes);
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +31,7 @@ export default function RecipePage() {
   }
 
   async function onRecipeRemove(recipeId) {
-    await RecipeService.deleteTask(recipeId);
+    await RecipeService.deleteRecipe(recipeId);
     setRecipes(recipes.filter((recipe) => recipe.id !== recipeId));
   }
 
@@ -54,7 +54,7 @@ export default function RecipePage() {
         <hr />
         <p>An easy way to keep track of your recipes</p>
 
-        <RecipeForm onTaskCreate={onRecipeCreate} />
+        <RecipeForm onRecipeCreate={onRecipeCreate} />
         <RecipeTable
           recipes={recipes}
           onRecipeRemove={onRecipeRemove}

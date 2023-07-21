@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function TaskInput(props) {
+export default function RecipeForm(props) {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
