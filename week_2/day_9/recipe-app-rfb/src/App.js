@@ -6,9 +6,11 @@ import { auth } from './firebase/firebase';
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
+
 
 import NavBar from './components/common/NavBar';
 import RecipePage from './components/recipe/RecipePage';
@@ -35,15 +37,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   )
-
-  // put this in one of the recipe files
-  // return (
-  //   <div className='text-center m-5'>
-  //     <div className='card p-4'>
-  //       <RecipeForm />
-  //     </div>
-  //   </div>
-  // );
 }
 
 export default App;
