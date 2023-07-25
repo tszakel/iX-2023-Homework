@@ -1,8 +1,12 @@
 import React from 'react';
+import Spinner from '../common/Spinner';
 
 export default function RecipeTable(props) {
   return (
     <div>
+      {props.loading ? (
+        <Spinner></Spinner>
+      )  : ( 
       <table className="table">
         <thead>
           <tr>
@@ -39,6 +43,7 @@ export default function RecipeTable(props) {
           })}
         </tbody>
       </table>
+      )}
     </div>
   );
 }

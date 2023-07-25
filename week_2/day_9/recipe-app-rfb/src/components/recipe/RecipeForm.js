@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+import Spinner from '../common/Spinner';
+
 
 export default function RecipeForm(props) {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
+  const [loading, setLoading] = useState(false);
 
   function onRecipeFormSubmit(e) {
     e.preventDefault();
 
+    setLoading(true);
     props.onRecipeCreate(name,ingredients,instructions,false);
+    setLoading(false);
     setName('');
   }
 
@@ -44,7 +49,7 @@ export default function RecipeForm(props) {
             type="text"
           ></input>
           <button className="btn btn-outline-secondary" type="submit">
-            +
+          {loading ? <Spinner extraClass="change-size" /> : '+'}
           </button>
         </div>
       </form>

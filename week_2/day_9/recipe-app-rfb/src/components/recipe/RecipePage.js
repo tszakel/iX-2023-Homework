@@ -7,8 +7,9 @@ import RecipeTable from './RecipeTable';
 
 import RecipeService from '../../services/recipe-service';
 
-export default function RecipePage() {
+export default function RecipePage(props) {
   const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!recipes.length) {
@@ -17,16 +18,18 @@ export default function RecipePage() {
   }, []);
 
   async function onInitialLoad() {
+    setLoading(true);
     try {
       const recipes = await RecipeService.fetchRecipes();
-      setRecipes(recipes);
+      setRecipes(recipes.filter((recipe) => recipe.userId === props.user.uid));
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   }
 
   async function onRecipeCreate(name, ingredients, instructions) {
-    const recipe = await RecipeService.createRecipe(new Recipe(null, name, ingredients, instructions,false));
+    const recipe = await RecipeService.createRecipe(new Recipe(null, name, ingredients, instructions,false, props.user.uid));
     setRecipes([...recipes, recipe]);
   }
 
@@ -57,6 +60,7 @@ export default function RecipePage() {
         <RecipeForm onRecipeCreate={onRecipeCreate} />
         <RecipeTable
           recipes={recipes}
+          loading={loading}
           onRecipeRemove={onRecipeRemove}
           onRecipeFavoriteToggle={onRecipeFavoriteToggle}
         />

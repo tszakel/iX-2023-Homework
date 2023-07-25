@@ -24,7 +24,7 @@ import {
       const recipes = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        const recipe = new Recipe(doc.id, data.name, data.ingredients, data.instructions);
+        const recipe = new Recipe(doc.id, data.name, data.ingredients, data.instructions, data.userId);
         recipes.push(recipe);
       });
   
@@ -38,6 +38,7 @@ import {
         name: recipe.name,
         ingredients: recipe.ingredients,
         instructions: recipe.instructions,
+        userId: recipe.userId,
       });
   
       recipe.id = docRef.id;
@@ -51,6 +52,7 @@ import {
         name: recipe.name,
         ingredients: recipe.ingredients,
         instructions: recipe.instructions,
+        favorite: recipe.favorite
       });
   
       return recipe;
